@@ -1,0 +1,50 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+<div class="text-center m-auto mt-3" style="width: 350px;">
+    <h2 class="font-monospace">Create your account</h2>
+
+    {% if message %}
+        <div style="width: 100%; margin: 10px auto 10px;">
+                <div class="alert alert-danger round-custom mt-3" role="alert">
+                     {{message}}
+                </div>
+            </div>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+
+        
+        <div class="form-floating mb-3">
+          <input  type="text" class="form-control" id="username" name="username" placeholder="Username">
+          <label for="username">Username</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input  type="email" class="form-control" id="email" name="email" placeholder="Email">
+          <label for="email">Email</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          <label for="password">Password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" name="confirmation" id="password" placeholder="Password">
+          <label for="password">Confirm Password</label>
+        </div>
+       
+
+        
+
+        <input class="btn btn-primary round_custom" type="submit" value="Create account">
+    </form>
+    <br>
+    <br>
+    Already have an account? <a href="{% url 'login' %}">Sign in here.</a>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+
+    <div class="text-center m-auto mt-3" style="width: 350px;">
+        <h2 class="font-monospace">Sign in to Sweetr</h2>
+
+        {% if message %}
+
+            <div style="width: 100%; margin: 10px auto 10px;">
+                <div class="alert alert-danger round-custom mt-3" role="alert">
+                     {{message}}
+                </div>
+            </div>
+        {% endif %}
+
+
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            
+            <div class="form-floating mb-3">
+              <input  type="text" class="form-control" id="username" name="username" placeholder="Username">
+              <label for="username">Username</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+              <label for="password">Password</label>
+            </div>
+
+            
+            <input class="btn btn-primary round_custom" type="submit" value="Login">
+        </form>
+        <br>
+        <br>
+        Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+
+    </div>
+
+{% endblock %}
